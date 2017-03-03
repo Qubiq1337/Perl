@@ -22,17 +22,24 @@ run(1, 1, 1) - печатает "1, 1\n"
 run(1, 2, 2) - печатает "1, 2\n"
 
 =cut
-
 sub run {
     my ($x, $y, $z) = @_;
-    my $min = undef;
-    my $max = undef;
-
-    # ...
-    # Вычисление минимума и максимума
-    # ...
-
+    my $q=undef;
+    my $min= $x;
+    my $max= $x;
+	if ($y < $min) {
+        $min = $y;
+    }
+    if ($z < $min) {
+        $min = $z;
+    }
+    if ($y > $max) {
+        $max = $y;
+    }
+    if ($z > $max) {
+        $max = $z;
+    }
     print "$min, $max\n";
-}
 
+}
 1;
