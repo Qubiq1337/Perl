@@ -25,16 +25,16 @@ run("abcab", "ab") - печатает "2\n"
 run("ab", "c") - печатает "0\n"
 
 =cut
-
 sub run {
     my ($str, $substr) = @_;
+    $_=$str;
     my $num = 0;
+    my $count;
+    
+    $count += s/$substr//ig;
+ 
+print $count . "\n";
 
-    # ...
-    # Вычисление количества вохождений строки $substr в строку $str,
-    # ...
-
-    print "$num\n";
 }
 
 1;
