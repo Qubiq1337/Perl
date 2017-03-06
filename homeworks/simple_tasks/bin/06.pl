@@ -21,13 +21,41 @@ encode('#abc', 1) - печатает '$bcd'
 
 sub encode {
     my ($str, $key) = @_;
-    my $encoded_str = '';
-
-    # ...
-    # Алгоритм шифрования
-    # ...
-
-    print "$encoded_str\n";
+    my $counter=0;
+    my $sub;
+    if ($key==128){
+        print "$str\n";
+    }
+    elsif($key>128) 
+    {
+        #ord - символ в цифру
+        #chr - число в символ
+        while ($key>128) #узнаю смещение и записываю в key
+        {
+            $key=$key-128;
+        }
+        while($counter<length($str))
+        {
+            $sub=substr($str,$counter,1);
+            my $x=ord($sub);
+            my $y=chr($x+$key);
+            print $y;
+            ++$counter; 
+        }
+        print "\n"; #перевод строки
+    }
+    elsif($key<128)
+    {
+    	while($counter<length($str))
+        {
+            $sub=substr($str,$counter,1);
+            my $x=ord($sub);
+            my $y=chr($x+$key);
+            print $y;
+            ++$counter; 
+        }
+        print "\n";
+    }
 }
 
 =head1 decode ($encoded_str, $key)
@@ -42,14 +70,42 @@ decode('$bcd', 1) - печатает '#abc'
 =cut
 
 sub decode {
-    my ($encoded_str, $key) = @_;
-    my $str = '';
-
-    # ...
-    # Алгоритм дешифрования
-    # ...
-
-    print "$str\n";
+    my ($str, $key) = @_;
+    my $counter=0;
+    my $sub;
+    if ($key==128){
+        print "$str\n";
+    }
+    elsif($key>128) 
+    {
+        #ord - символ в цифру
+        #chr - число в символ
+        while ($key>128) #узнаю смещение и записываю в key
+        {
+            $key=$key-128;
+        }
+        while($counter<length($str))
+        {
+            $sub=substr($str,$counter,1);
+            my $x=ord($sub);
+            my $y=chr($x-$key);
+            print $y;
+            ++$counter; 
+        }
+        print "\n"; #перевод строки
+    }
+    elsif($key<128)
+    {
+    	while($counter<length($str))
+        {
+            $sub=substr($str,$counter,1);
+            my $x=ord($sub);
+            my $y=chr($x-$key);
+            print $y;
+            ++$counter; 
+        }
+        print "\n";
+    }
 }
 
 1;
