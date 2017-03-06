@@ -24,13 +24,12 @@ run(6) - печатает "1\n"
 =cut
 
 sub run {
-    my ($x) = @_;
+    my ($decvalue) = @_;
     my $num = 0;
 
-    # ...
-    # Вычисление номера первого ненулевого бита 
-    # ...
-
+    my $binvalue = sprintf( "%b", $decvalue  );
+    my $result = reverse($binvalue);
+    $num = index($result,1);
     print "$num\n";
 }
 
